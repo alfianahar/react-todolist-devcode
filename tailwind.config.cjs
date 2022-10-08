@@ -16,6 +16,7 @@ module.exports = {
           primary: "#16ABF8",
           error: "#ED4C5C",
           "base-100": "#fcfcfc",
+          "--rounded-btn": "9999px",
         },
       },
     ],
