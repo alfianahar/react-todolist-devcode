@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 
+
+
 function Root() {
+
+
     return (
         <>
             <header
@@ -12,9 +16,9 @@ function Root() {
                     TO DO LIST APP
                 </h1 >
             </header >
-            <div className='flex flex-col gap px-6 py-11 lg:px-48'>
+            <main className='flex flex-col gap px-6 py-11 lg:px-48'>
                 <Outlet />
-            </div>
+            </main>
         </>
     )
 }
