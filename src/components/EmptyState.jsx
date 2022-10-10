@@ -1,20 +1,25 @@
+import { useEffect, useState } from 'react'
 import emptyActivity from '../assets/activity-empty-state.svg'
 import todoActivity from '../assets/todo-empty-state.svg'
 
 function EmptyState({ main }) {
+    // const [empty, setEmpty] = useState(true)
+    // useEffect(() => {
+    //     setEmpty(main)
+    // }, [main])
 
     return (
-        <div data class="flex justify-center">
+        <div className="flex justify-center">
             {main ?
                 <img
                     src={emptyActivity}
                     alt="empty-state"
-                    class="lg:w-4/6"
+                    className="lg:w-4/6"
                 /> :
                 <img
                     src={todoActivity}
                     alt="empty-list"
-                    class="lg:w-4/6"
+                    className="lg:w-4/6"
                 />
             }
         </div>

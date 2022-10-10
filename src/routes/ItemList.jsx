@@ -10,7 +10,7 @@ function ItemList() {
         <>
             <TitleBar />
             <div className='min-h-[70vh] lg:min-h-[60vh] flex items-center'>
-                <EmptyState data-cy="todo-empty-state" main={main} />
+                <EmptyState data-cy="todo-empty-state" />
             </div>
 
         </>
