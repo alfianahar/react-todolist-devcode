@@ -13,9 +13,7 @@ function Dashboard() {
             `https://todo.api.devcode.gethired.id/activity-groups?email=alfian.aswinda%40gmail.com`
         ).then(response => {
             setActivity(response.data.data)
-            console.log(activity)
         }).catch(err => console.log(err.message))
-        // ()
     }
 
     useEffect(() => {
@@ -29,8 +27,8 @@ function Dashboard() {
                 <EmptyState data-cy="activity-empty-state" main />
             </div>
             {activity.map((act) => (
-                <div>
-                    <p> {act.id} </p>
+                <div key={act.id}>
+                    <p> {act.title} </p>
 
                 </div>
             ))}
