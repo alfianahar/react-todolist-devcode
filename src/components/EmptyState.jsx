@@ -1,20 +1,22 @@
-import React from 'react'
+import emptyActivity from '../assets/activity-empty-state.svg'
+import todoActivity from '../assets/todo-empty-state.svg'
 
-function EmptyState() {
+function EmptyState({ main }) {
+
     return (
-        <div class="flex justify-center">
-            <img
-
-                src="../assets/activity-empty-state.svg"
-                alt="empty-state"
-                class="lg:w-4/6"
-            />
-            <img
-
-                src="../assets/todo-empty-state.svg"
-                alt="empty-list"
-                class="lg:w-4/6"
-            />
+        <div data class="flex justify-center">
+            {main ?
+                <img
+                    src={emptyActivity}
+                    alt="empty-state"
+                    class="lg:w-4/6"
+                /> :
+                <img
+                    src={todoActivity}
+                    alt="empty-list"
+                    class="lg:w-4/6"
+                />
+            }
         </div>
     )
 }
