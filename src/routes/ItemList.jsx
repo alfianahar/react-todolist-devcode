@@ -9,7 +9,7 @@ function ItemList() {
     return (
         <>
             <TitleBar />
-            <Link to={`/`}>To Home</Link>
+
         </>
     )
 }
