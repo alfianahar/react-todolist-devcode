@@ -6,7 +6,7 @@ const usePathname = () => {
     return location.pathname;
 }
 
-function TitleBar() {
+function TitleBar(props) {
     const [path, setPath] = useState()
 
     const currentPath = usePathname().substring((usePathname().lastIndexOf("/")
@@ -32,7 +32,7 @@ function TitleBar() {
                             className="btn btn-primary gap-2  font-semibold text-base normal-case px-3 lg:px-5"
                             type="button"
                             data-cy="activity-add-button"
-
+                            onClick={props.addActivity}
                         >
                             <i className='bx bx-plus bx-sm'></i>
                             <span className="hidden lg:block"> Tambah </span>
