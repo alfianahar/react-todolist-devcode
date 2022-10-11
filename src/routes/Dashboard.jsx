@@ -40,8 +40,7 @@ function Dashboard() {
             `https://todo.api.devcode.gethired.id/activity-groups/${id}`
         );
         setActivity(activity.filter((val) => val.id !== id))
-        console.log(activity.length)
-
+        // console.log(activity.length)
     }
 
     useEffect(() => {
