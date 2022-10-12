@@ -13,16 +13,16 @@ function ModalDelete(props) {
                             <span className='font-bold'>{props.data.title}</span> ?
                         </h3>
                     </div>
-                    <div className="flex justify-center p-6 gap-4">
+                    <div className="flex justify-center p-6 gap-9">
                         <label
-                            className='btn btn-active btn-accent py-3 px-12'
+                            className='btn btn-active btn-accent py-3 px-9'
                             htmlFor="my-modal"
                             type="button"
                             data-cy="modal-delete-cancel-button">
                             Batal
                         </label>
                         <label
-                            className='btn btn-error py-3 px-12 text-white' type="submit"
+                            className='btn btn-error py-3 px-9 text-white' type="submit"
                             htmlFor="my-modal"
                             data-cy="modal-delete-confirm-button"
                             onClick={() => props.deleteActivity(props.data.id)}>

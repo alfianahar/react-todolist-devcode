@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios';
 import EmptyState from '../components/EmptyState'
 import TitleBar from '../components/TitleBar'
-import axios from 'axios';
 import ActivityList from '../components/ActivityList';
 import ModalDelete from '../components/ModalDelete';
 import ModalDone from '../components/ModalDone';

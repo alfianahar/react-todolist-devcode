@@ -50,7 +50,7 @@ function ActivityList(props) {
                 {props.title}
             </h1>
             <div className='flex flex-row justify-between items-center' >
-                <p className=' lg:font-medium text-gray-700' data-cy="activity-item-date">
+                <p className=' lg:font-medium text-gray-700 text-sm' data-cy="activity-item-date">
                     {dateFunc(props.date)}
                 </p>
                 {/* <button
