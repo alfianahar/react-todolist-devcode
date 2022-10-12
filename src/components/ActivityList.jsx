@@ -29,7 +29,12 @@ function ActivityList(props) {
     }
 
     const handleDel = (event) => {
-        props.delActivity(props.id)
+        props.setData({
+            id: props.id,
+            title: props.title,
+            route: "activity",
+        })
+
         event.stopPropagation();
     }
 
@@ -48,13 +53,18 @@ function ActivityList(props) {
                 <p className=' lg:font-medium text-gray-700' data-cy="activity-item-date">
                     {dateFunc(props.date)}
                 </p>
-                {/* <ModalDelete /> */}
-                <button
+                {/* <button
                     className='btn btn-circle btn-sm btn-outline btn-error' data-cy="activity-item-delete-button"
                     onClick={handleDel}>
                     <i className='bx bx-trash'></i>
-                </button>
-
+                </button> */}
+                <label
+                    htmlFor="my-modal"
+                    className="btn modal-button btn-circle btn-sm btn-outline btn-error" data-cy="activity-item-delete-button"
+                    onClick={handleDel}
+                >
+                    <i className='bx bx-trash'></i>
+                </label>
             </div>
 
         </div>

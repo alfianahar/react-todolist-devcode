@@ -1,18 +1,34 @@
 import React from 'react'
 
-function ModalDelete() {
+function ModalDelete(props) {
+
     return (
         <>
-
-            <label htmlFor="my-modal-4" className="btn modal-button btn-circle btn-sm btn-outline btn-error" data-cy="activity-item-delete-button">
-                <i className='bx bx-trash'></i>
-            </label>
-
-            <input type="checkbox" id="my-modal-4" className="modal-toggle" />
-            <label htmlFor="my-modal-4" className="modal cursor-pointer">
-                <label className="modal-box relative" for="">
-                    <h3 className="text-lg font-bold">Congratulations random Internet user!</h3>
-                    <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+            <input type="checkbox" id="my-modal" className="modal-toggle" />
+            <label htmlFor="my-modal" className="modal">
+                <label className="modal-box relative" >
+                    <div className='flex flex-col gap-7 items-center'>
+                        <i className='bx bx-error text-[#ED4C5C] text-8xl' ></i>
+                        <h3 className="text-lg text-center">Apakah anda yakin untuk menghapus {props.data.route} <br />
+                            <span className='font-bold'>{props.data.title}</span> ?
+                        </h3>
+                    </div>
+                    <div className="flex justify-center p-6 gap-4">
+                        <label
+                            className='btn btn-active btn-accent py-3 px-12'
+                            htmlFor="my-modal"
+                            type="button"
+                            data-cy="modal-delete-cancel-button">
+                            Batal
+                        </label>
+                        <label
+                            className='btn btn-error py-3 px-12 text-white' type="submit"
+                            htmlFor="my-modal"
+                            data-cy="modal-delete-confirm-button"
+                            onClick={() => props.deleteActivity(props.data.id)}>
+                            Hapus
+                        </label>
+                    </div>
                 </label>
             </label>
         </>
