@@ -17,7 +17,7 @@ function ModalAdd() {
                     </div>
                     <div className="border-t border-b pt-6 pb-6 space-y-6">
                         <div className="flex flex-col">
-                            <label for="name" className="font-semibold text-xs mb-3 "
+                            <label className="font-semibold text-xs mb-3 "
                             >NAMA LIST ITEM</label>
                             <input
                                 required
@@ -28,7 +28,7 @@ function ModalAdd() {
                             />
                         </div>
                         <div className="flex flex-col">
-                            <label for="priority" class="font-semibold text-xs mb-3"
+                            <label className="font-semibold text-xs mb-3"
                             >PRIORITY</label>
                         </div>
                     </div>

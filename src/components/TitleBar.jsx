@@ -8,10 +8,32 @@ const usePathname = () => {
 
 function TitleBar(props) {
     const [path, setPath] = useState()
+    const [editTitle, setEditTitle] = useState(false)
+    const [title, setTitle] = useState('')
 
     const currentPath = usePathname().substring((usePathname().lastIndexOf("/")
     ) + 1)
 
+    const focusTitle = () => {
+        setEditTitle(!editTitle);
+        setTitle(props.item.title)
+        setTimeout(() => {
+            document.getElementById("item-title").focus();
+        }, 10);
+        return
+    }
+
+    const editTitleActivity = () => {
+        console.log(title)
+        setTimeout(() => {
+            setEditTitle(false);
+        }, 10);
+        return
+    }
+
+    // useEffect(() => {
+    //     focusTitle()
+    // }, [editTitle])
 
     useEffect(() => {
         setPath(currentPath)
@@ -47,17 +69,26 @@ function TitleBar(props) {
                                     <Link to={`/`}>
                                         <i className='bx bxs-chevron-left bx-md bx-fade-left-hover'></i>
                                     </Link>
-                                    {/* <input
-                                        type="text"
-                                        id="item-title"
-                                        className="bg-transparent border-b-2 font-bold text-2xl w-full"
-                                    /> */}
-                                    <h1 className="font-bold text-2xl lg:text-3xl cursor-pointer"
-                                        data-cy="todo-title"
-                                    >
-                                        {props.item.title}
-                                    </h1>
-                                    <button type="button" className='pt-1'>
+                                    {editTitle ?
+                                        <input
+                                            type="text"
+                                            id="item-title"
+                                            className="bg-transparent border-b-2 font-bold text-2xl w-full"
+                                            value={title}
+                                            onChange={(e) => setTitle(e.target.value)}
+                                            onBlur={editTitleActivity}
+                                            onKeyDown={(e) => { e.key === 'Enter' ? editTitleActivity() : '' }}
+                                        />
+                                        :
+                                        <h1 className="font-bold text-2xl lg:text-3xl cursor-pointer"
+                                            data-cy="todo-title"
+                                            onClick={() => focusTitle()}
+                                        >
+                                            {props.item.title}
+                                        </h1>
+
+                                    }
+                                    <button type="button" className='pt-1' onClick={() => focusTitle()}>
                                         <i className='bx bx-pencil bx-sm' ></i>
                                     </button>
                                 </div>
