@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useLocation, Link } from 'react-router-dom'
+import axios from 'axios';
 
 const usePathname = () => {
     const location = useLocation();
@@ -19,21 +20,24 @@ function TitleBar(props) {
         setTitle(props.item.title)
         setTimeout(() => {
             document.getElementById("item-title").focus();
-        }, 10);
+        }, 5);
         return
     }
 
-    const editTitleActivity = () => {
-        console.log(title)
+    const editTitleActivity = async () => {
+        const request = {
+            title: title,
+        }
+        const headers = {
+            "Content-Type": "application/json",
+        }
+        await axios.patch(`https://todo.api.devcode.gethired.id/activity-groups/${props.item.id}`, request, headers)
+        await props.afterChange()
         setTimeout(() => {
             setEditTitle(false);
-        }, 10);
+        }, 1);
         return
     }
-
-    // useEffect(() => {
-    //     focusTitle()
-    // }, [editTitle])
 
     useEffect(() => {
         setPath(currentPath)

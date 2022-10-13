@@ -11,9 +11,7 @@ import ModalAdd from '../components/ModalAdd';
 function ItemList() {
 
     const [item, setItem] = useState([])
-
     const params = useParams()
-    // console.log(params.id);
 
     const getItemsList = async () => {
         await axios.get(
@@ -22,8 +20,18 @@ function ItemList() {
             setItem(response.data)
         }).catch(err => console.log(err.message))
     }
-    console.log(item);
 
+    const setActiveStatus = async (id, isActive) => {
+        const request = {
+            is_active: isActive === 0 ? 1 : 0,
+        }
+        const headers = {
+            "Content-Type": "application/json",
+        }
+        await axios.patch(`https://todo.api.devcode.gethired.id/todo-items/${id}`, request, headers)
+        await getItemsList()
+        return
+    }
 
     useEffect(() => {
         getItemsList()
@@ -31,7 +39,7 @@ function ItemList() {
 
     return (
         <>
-            <TitleBar item={item} />
+            <TitleBar item={item} afterChange={getItemsList} />
             {item?.todo_items?.length === 0 ?
                 <div className='min-h-[70vh] lg:min-h-[60vh] flex items-center'>
                     <EmptyState data-cy="todo-empty-state" />
@@ -43,7 +51,7 @@ function ItemList() {
                         :
                         <>
                             {item.todo_items.map((todo) => (
-                                <TodoList key={todo.id} item={todo} />
+                                <TodoList key={todo.id} item={todo} setActiveStatus={setActiveStatus} />
                             ))}
                         </>
                     }
