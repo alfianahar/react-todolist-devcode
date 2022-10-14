@@ -7,17 +7,41 @@ const usePathname = () => {
     return location.pathname;
 }
 
-function TitleBar(props) {
+function TitleBar({ item, afterChange, addActivity }) {
     const [path, setPath] = useState()
     const [editTitle, setEditTitle] = useState(false)
     const [title, setTitle] = useState('')
+    const [sort, setSort] = useState('')
 
     const currentPath = usePathname().substring((usePathname().lastIndexOf("/")
     ) + 1)
 
+    const sortOption = [
+        {
+            value: "Terbaru",
+            icon: "bx bx-sort-down",
+        },
+        {
+            value: "Terlama",
+            icon: "bx bx-sort-up",
+        },
+        {
+            value: "A-Z",
+            icon: "bx bx-sort-a-z",
+        },
+        {
+            value: "Z-A",
+            icon: "bx bx-sort-z-a",
+        },
+        {
+            value: "Belum Selesai",
+            icon: "bx bx-sort-alt-2",
+        },
+    ]
+
     const focusTitle = () => {
         setEditTitle(!editTitle);
-        setTitle(props.item.title)
+        setTitle(item.title)
         setTimeout(() => {
             document.getElementById("item-title").focus();
         }, 5);
@@ -31,8 +55,8 @@ function TitleBar(props) {
         const headers = {
             "Content-Type": "application/json",
         }
-        await axios.patch(`https://todo.api.devcode.gethired.id/activity-groups/${props.item.id}`, request, headers)
-        await props.afterChange()
+        await axios.patch(`https://todo.api.devcode.gethired.id/activity-groups/${item.id}`, request, headers)
+        await afterChange()
         setTimeout(() => {
             setEditTitle(false);
         }, 1);
@@ -48,7 +72,7 @@ function TitleBar(props) {
         }
     }, [path])
 
-    // console.log(props.item)
+    console.log(sort)
     return (
         <>
             <div className="flex justify-between items-center w-full">
@@ -59,14 +83,14 @@ function TitleBar(props) {
                             className="btn btn-primary gap-2  font-semibold text-base normal-case px-3 lg:px-5"
                             type="button"
                             data-cy="activity-add-button"
-                            onClick={props.addActivity}
+                            onClick={addActivity}
                         >
                             <i className='bx bx-plus bx-sm'></i>
                             <span className="hidden lg:block"> Tambah </span>
                         </button>
                     </>
                     : <>
-                        {props && props?.item == undefined ?
+                        {item == undefined ?
                             <></> :
                             <>
                                 <div className='inline-flex items-center gap-3 lg:gap-4'>
@@ -88,7 +112,7 @@ function TitleBar(props) {
                                             data-cy="todo-title"
                                             onClick={() => focusTitle()}
                                         >
-                                            {props.item.title}
+                                            {item.title}
                                         </h1>
 
                                     }
@@ -97,20 +121,25 @@ function TitleBar(props) {
                                     </button>
                                 </div>
                                 <div className='inline-flex items-center gap-3 lg:gap-4'>
-                                    {/* <button
-                                        className='btn btn-circle btn-outline btn-secondary'
-                                        data-cy="todo-sort-button">
-                                    </button> */}
-                                    <div className="dropdown">
-                                        <label tabIndex={0} className="btn btn-circle btn-outline btn-secondary m-1" data-cy="todo-sort-button">
+                                    <div className="dropdown dropdown-end">
+                                        <label tabIndex={0} className="btn btn-circle btn-outline btn-secondary m-1" data-cy="todo-sort-button"
+                                        >
                                             <i className='bx bx-sort-alt-2 bx-sm'></i>
                                         </label>
                                         <ul tabIndex={0} className="dropdown-content menu shadow bg-base-100 rounded-md w-52">
-                                            <li><a><i className='bx bx-sort-down'></i>Terbaru</a></li>
-                                            <li><a><i className='bx bx-sort-up'></i>Terlama</a></li>
-                                            <li><a><i className='bx bx-sort-a-z' ></i>A-Z</a></li>
-                                            <li><a><i className='bx bx-sort-z-a' ></i>Z-A</a></li>
-                                            <li><a><i className='bx bx-sort-alt-2'></i>Belum Selesai</a></li>
+                                            {sortOption.map((sortItem) => (
+                                                <li
+                                                    key={sortItem.value}
+                                                    onClick={() => {
+                                                        setSort(sortItem.value);
+                                                        document.activeElement.blur();
+                                                    }} data-cy="sort-selection">
+                                                    <a>
+                                                        <i className={sortItem.icon}></i>
+                                                        {sortItem.value}
+                                                    </a>
+                                                </li>
+                                            ))}
                                         </ul>
                                     </div>
                                     <label

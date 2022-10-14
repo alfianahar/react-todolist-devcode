@@ -33,6 +33,29 @@ function ItemList() {
         return
     }
 
+    const priorityOption = [
+        {
+            value: 'very-high',
+            color: 'bg-[#ED4C5C]',
+        },
+        {
+            value: 'high',
+            color: 'bg-[#F8A541]',
+        },
+        {
+            value: 'normal',
+            color: 'bg-[#00A790]',
+        },
+        {
+            value: 'low',
+            color: 'bg-[#428BC1]',
+        },
+        {
+            value: 'very-low',
+            color: 'bg-[#8942C1]',
+        }
+    ]
+
     useEffect(() => {
         getItemsList()
     }, [])
@@ -58,7 +81,7 @@ function ItemList() {
                 </div>
             }
 
-            <ModalAdd />
+            <ModalAdd priority={priorityOption} />
             {/* <ModalDelete /> */}
             {/* <ModalDone /> */}
         </>
