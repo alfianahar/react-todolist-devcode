@@ -33,24 +33,47 @@ function ItemList() {
         return
     }
 
+    const createTodo = async (title, priority) => {
+        const request = {
+            activity_group_id: params.id,
+            title,
+            priority,
+        }
+        const headers = {
+            "Content-Type": "application/json",
+        }
+        await axios.post(
+            `https://todo.api.devcode.gethired.id/todo-items`, request, headers
+        ).then(response => {
+            setItem(response.data)
+        }).catch(err => console.log(err.message))
+        await getItemsList()
+        // console.log(title, priority)
+    }
+
     const priorityOption = [
         {
+            name: 'Very High',
             value: 'very-high',
             color: 'bg-[#ED4C5C]',
         },
         {
+            name: 'High',
             value: 'high',
             color: 'bg-[#F8A541]',
         },
         {
+            name: 'Medium',
             value: 'normal',
             color: 'bg-[#00A790]',
         },
         {
+            name: 'Low',
             value: 'low',
             color: 'bg-[#428BC1]',
         },
         {
+            name: 'Very Low',
             value: 'very-low',
             color: 'bg-[#8942C1]',
         }
@@ -81,7 +104,7 @@ function ItemList() {
                 </div>
             }
 
-            <ModalAdd priority={priorityOption} />
+            <ModalAdd priorityOption={priorityOption} createTodo={createTodo} />
             {/* <ModalDelete /> */}
             {/* <ModalDone /> */}
         </>

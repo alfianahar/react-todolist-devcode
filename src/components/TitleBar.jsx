@@ -39,6 +39,7 @@ function TitleBar({ item, afterChange, addActivity }) {
         },
     ]
 
+
     const focusTitle = () => {
         setEditTitle(!editTitle);
         setTitle(item.title)
@@ -70,9 +71,12 @@ function TitleBar({ item, afterChange, addActivity }) {
         } else {
             document.title = "Dashboard | React To Do List"
         }
+
+
     }, [path])
 
-    console.log(sort)
+    // console.log(sortOption[sortOption.findIndex(e => e.value == "Terbaru")].value)
+    console.log(item)
     return (
         <>
             <div className="flex justify-between items-center w-full">
