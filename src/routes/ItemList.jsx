@@ -87,9 +87,9 @@ function ItemList() {
         <>
             <TitleBar item={item} afterChange={getItemsList} />
             {item?.todo_items?.length === 0 ?
-                <div className='min-h-[70vh] lg:min-h-[60vh] flex items-center'>
+                <label className='min-h-[70vh] lg:min-h-[60vh] flex items-center cursor-pointer' htmlFor="my-modal-2">
                     <EmptyState data-cy="todo-empty-state" />
-                </div>
+                </label>
                 :
                 <div className="flex flex-col gap-2 mt-7 lg:mt-13">
                     {item?.todo_items == undefined ?
