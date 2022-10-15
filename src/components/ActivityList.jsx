@@ -1,5 +1,4 @@
 import React from 'react'
-import ModalDelete from './ModalDelete';
 import { useNavigate } from 'react-router-dom'
 
 function ActivityList(props) {
@@ -53,11 +52,6 @@ function ActivityList(props) {
                 <p className=' lg:font-medium text-gray-700 text-sm' data-cy="activity-item-date">
                     {dateFunc(props.date)}
                 </p>
-                {/* <button
-                    className='btn btn-circle btn-sm btn-outline btn-error' data-cy="activity-item-delete-button"
-                    onClick={handleDel}>
-                    <i className='bx bx-trash'></i>
-                </button> */}
                 <label
                     htmlFor="my-modal"
                     className="btn modal-button btn-circle btn-sm btn-outline btn-error" data-cy="activity-item-delete-button"

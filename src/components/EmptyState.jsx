@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React from 'react'
 import emptyActivity from '../assets/activity-empty-state.svg'
 import todoActivity from '../assets/todo-empty-state.svg'
 

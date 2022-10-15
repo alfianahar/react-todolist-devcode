@@ -1,7 +1,6 @@
 import React from 'react'
 
 function ModalDelete(props) {
-
     return (
         <>
             <input type="checkbox" id="my-modal" className="modal-toggle" />
