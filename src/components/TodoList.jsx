@@ -1,6 +1,16 @@
 import React from 'react'
 
-function TodoList({ item, setActiveStatus }) {
+function TodoList({ item, setActiveStatus, setData }) {
+
+    const handleDel = (event) => {
+        setData({
+            id: item.id,
+            title: item.title,
+            route: "list item",
+        })
+
+        event.stopPropagation();
+    }
 
     return (
         <div className='p-6 w-full h-20 bg-white rounded-xl border border-gray-200 shadow-xl inline-flex flex-col'>
@@ -34,6 +44,7 @@ function TodoList({ item, setActiveStatus }) {
                 <label
                     htmlFor="my-modal"
                     className="btn modal-button btn-circle btn-sm btn-outline btn-error" data-cy="activity-item-delete-button"
+                    onClick={handleDel}
                 >
                     <i className='bx bx-trash'></i>
                 </label>

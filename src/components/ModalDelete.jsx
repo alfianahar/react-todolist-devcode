@@ -10,7 +10,7 @@ function ModalDelete(props) {
                     <div className='flex flex-col gap-7 items-center'>
                         <i className='bx bx-error text-[#ED4C5C] text-8xl' ></i>
                         <h3 className="text-lg text-center">Apakah anda yakin untuk menghapus {props.data.route} <br />
-                            <span className='font-bold'>{props.data.title}</span> ?
+                            <span className='font-bold'>"{props.data.title}"</span> ?
                         </h3>
                     </div>
                     <div className="flex justify-center p-6 gap-9">

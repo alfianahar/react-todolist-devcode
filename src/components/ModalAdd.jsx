@@ -4,7 +4,7 @@ function ModalAdd({ priorityOption, createTodo }) {
 
     const [openPriorityOpt, setOpenPriorityOpt] = useState(false)
     const [todoTitle, setTodoTitle] = useState('')
-    const [priority, setPriority] = useState('')
+    const [priority, setPriority] = useState('very-high')
 
     // console.log(todoTitle)
     // console.log(priority)
@@ -85,7 +85,10 @@ function ModalAdd({ priorityOption, createTodo }) {
                             htmlFor="my-modal-2"
                             data-cy="modal-add-save-button"
                             disabled={todoTitle === ''}
-                            onClick={() => createTodo(todoTitle, priority)}
+                            onClick={() => {
+                                createTodo(todoTitle, priority);
+                                setPriority('very-high')
+                            }}
                         >
                             Simpan
                         </label>

@@ -76,7 +76,7 @@ function TitleBar({ item, afterChange, addActivity }) {
     }, [path])
 
     // console.log(sortOption[sortOption.findIndex(e => e.value == "Terbaru")].value)
-    console.log(item)
+    // console.log(item)
     return (
         <>
             <div className="flex justify-between items-center w-full">

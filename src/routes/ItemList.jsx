@@ -11,6 +11,8 @@ import ModalAdd from '../components/ModalAdd';
 function ItemList() {
 
     const [item, setItem] = useState([])
+    const [data, setData] = useState([])
+    const [done, setDone] = useState(false)
     const params = useParams()
 
     const getItemsList = async () => {
@@ -49,6 +51,17 @@ function ItemList() {
         }).catch(err => console.log(err.message))
         await getItemsList()
         // console.log(title, priority)
+    }
+
+    const deleteTodo = async (id) => {
+        await axios.delete(
+            `https://todo.api.devcode.gethired.id/todo-items/${id}`
+        );
+        setTimeout(() => {
+            setDone(true)
+        }, 50);
+        await getItemsList()
+        console.log(item.todo_items)
     }
 
     const priorityOption = [
@@ -97,7 +110,7 @@ function ItemList() {
                         :
                         <>
                             {item.todo_items.map((todo) => (
-                                <TodoList key={todo.id} item={todo} setActiveStatus={setActiveStatus} />
+                                <TodoList key={todo.id} item={todo} setActiveStatus={setActiveStatus} setData={setData} />
                             ))}
                         </>
                     }
@@ -105,8 +118,8 @@ function ItemList() {
             }
 
             <ModalAdd priorityOption={priorityOption} createTodo={createTodo} />
-            {/* <ModalDelete /> */}
-            {/* <ModalDone /> */}
+            <ModalDelete data={data} deleteActivity={deleteTodo} />
+            <ModalDone done={done} setDone={setDone} />
         </>
     )
 }
