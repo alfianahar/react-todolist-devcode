@@ -65,8 +65,8 @@ function Dashboard() {
                     ))}
                 </div>
             }
-            <ModalDelete data={data} deleteActivity={deleteActivity} data-cy="modal-delete" />
-            <ModalDone done={done} setDone={setDone} data-cy="modal-information" />
+            <ModalDelete data={data} deleteActivity={deleteActivity} />
+            <ModalDone done={done} setDone={setDone} />
         </>
     )
 }

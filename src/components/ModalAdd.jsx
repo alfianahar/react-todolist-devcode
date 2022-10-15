@@ -28,7 +28,7 @@ function ModalAdd({ priorityOption, data, setData, createTodo, editTodo }) {
         <>
             <input type="checkbox" id="my-modal-2" className="modal-toggle" />
             <label htmlFor="my-modal-2" className="modal" onClick={(e) =>
-                e.target === e.currentTarget ? setData([]) : ''} >
+                e.target === e.currentTarget ? setData([]) : ''} data-cy="modal-add">
                 <label className="modal-box-add relative " >
                     <div className="flex justify-between items-center mb-6">
                         <h1 className="text-xl font-semibold">Tambah List Item</h1>
