@@ -16,7 +16,6 @@ function ModalAdd({ priorityOption, data, setData, createTodo, editTodo }) {
 
     useEffect(() => {
         if (data.edit) {
-            // console.log(data)
             setTodoTitle(data.title)
             setPriority(data.priority)
             return
@@ -24,9 +23,6 @@ function ModalAdd({ priorityOption, data, setData, createTodo, editTodo }) {
         setTodoTitle('')
         setPriority('very-high')
     }, [data])
-
-    console.log(openPriorityOpt)
-    // console.log(priority)
 
     return (
         <>

@@ -3,11 +3,6 @@ import emptyActivity from '../assets/activity-empty-state.svg'
 import todoActivity from '../assets/todo-empty-state.svg'
 
 function EmptyState({ main }) {
-    // const [empty, setEmpty] = useState(true)
-    // useEffect(() => {
-    //     setEmpty(main)
-    // }, [main])
-
     return (
         <div className="flex justify-center">
             {main ?

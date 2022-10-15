@@ -13,6 +13,7 @@ function ItemList() {
     const [item, setItem] = useState([])
     const [data, setData] = useState([])
     const [done, setDone] = useState(false)
+    const [sortValue, setSortValue] = useState('terbaru')
     const params = useParams()
 
     const getItemsList = async () => {
@@ -80,7 +81,6 @@ function ItemList() {
         await getItemsList()
         setData([])
     }
-    console.log(data)
 
     const priorityOption = [
         {
@@ -110,13 +110,55 @@ function ItemList() {
         }
     ]
 
+    const sortedTodo = () => {
+        let items = item?.todo_items;
+
+        function compare(a, b, sortedKey, sortedType) {
+            if (sortedType === "desc") {
+                if (a[sortedKey] < b[sortedKey]) {
+                    return -1;
+                }
+                if (a[sortedKey] > b[sortedKey]) {
+                    return 1;
+                }
+                return 0;
+            }
+            if (a[sortedKey] > b[sortedKey]) {
+                return -1;
+            }
+            if (a[sortedKey] < b[sortedKey]) {
+                return 1;
+            }
+            return 0;
+        }
+
+        if (sortValue === "terbaru" && items) {
+            items.sort((a, b) => compare(a, b, "id", "asc"));
+        }
+        if (sortValue === "terlama")
+            items = items.sort((a, b) => compare(a, b, "id", "desc"));
+        if (sortValue === "a_z")
+            items = items.sort((a, b) => compare(a, b, "title", "desc"));
+        if (sortValue === "z_a")
+            items = items.sort((a, b) => compare(a, b, "title", "asc"));
+        if (sortValue === "belum_selesai")
+            items = items.sort((a, b) => compare(a, b, "is_active", "asc"));
+
+        return items;
+    };
+
+    useEffect(() => {
+        sortedTodo()
+    }, [sortValue])
+
     useEffect(() => {
         getItemsList()
     }, [])
 
+
     return (
         <>
-            <TitleBar item={item} afterChange={getItemsList} />
+            <TitleBar item={item} afterChange={getItemsList} setSortValue={setSortValue} />
             {item?.todo_items?.length === 0 ?
                 <label className='min-h-[70vh] lg:min-h-[60vh] flex items-center cursor-pointer' htmlFor="my-modal-2">
                     <EmptyState data-cy="todo-empty-state" />
@@ -127,7 +169,7 @@ function ItemList() {
                         <></>
                         :
                         <>
-                            {item.todo_items.map((todo) => (
+                            {sortedTodo().map((todo) => (
                                 <TodoList key={todo.id} item={todo} setActiveStatus={setActiveStatus} setData={setData} />
                             ))}
                         </>

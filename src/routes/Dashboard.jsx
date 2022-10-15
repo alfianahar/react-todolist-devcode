@@ -35,11 +35,8 @@ function Dashboard() {
         // activity.map(async (act) => await axios.delete(
         //     `https://todo.api.devcode.gethired.id/activity-groups/${act.id}`
         // ))
-        // console.log(activity.length)
         setClick(!click)
     }
-
-    // const toggleDelete
 
     const deleteActivity = async (id) => {
         await axios.delete(
@@ -49,7 +46,6 @@ function Dashboard() {
         setActivity(activity.filter((val) => val.id !== id))
         setData([])
     }
-    // console.log(data)
 
     useEffect(() => {
         getActivities()

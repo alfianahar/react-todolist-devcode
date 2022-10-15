@@ -7,11 +7,10 @@ const usePathname = () => {
     return location.pathname;
 }
 
-function TitleBar({ item, afterChange, addActivity }) {
+function TitleBar({ item, afterChange, addActivity, setSortValue }) {
     const [path, setPath] = useState()
     const [editTitle, setEditTitle] = useState(false)
     const [title, setTitle] = useState('')
-    const [sort, setSort] = useState('')
 
     const currentPath = usePathname().substring((usePathname().lastIndexOf("/")
     ) + 1)
@@ -80,8 +79,6 @@ function TitleBar({ item, afterChange, addActivity }) {
 
     }, [path])
 
-    // console.log(sortOption[sortOption.findIndex(e => e.value == "Terbaru")].value)
-    // console.log(item)
     return (
         <>
             <div className="flex justify-between items-center w-full">
@@ -140,7 +137,7 @@ function TitleBar({ item, afterChange, addActivity }) {
                                                 <li
                                                     key={sortItem.value}
                                                     onClick={() => {
-                                                        setSort(sortItem.value);
+                                                        setSortValue(sortItem.value);
                                                         document.activeElement.blur();
                                                     }} data-cy="sort-selection">
                                                     <a>
