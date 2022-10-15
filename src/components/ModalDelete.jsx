@@ -5,7 +5,7 @@ function ModalDelete(props) {
     return (
         <>
             <input type="checkbox" id="my-modal" className="modal-toggle" />
-            <label htmlFor="my-modal" className="modal">
+            <label htmlFor="my-modal" className="modal" >
                 <label className="modal-box relative" >
                     <div className='flex flex-col gap-7 items-center'>
                         <i className='bx bx-error text-[#ED4C5C] text-8xl' ></i>

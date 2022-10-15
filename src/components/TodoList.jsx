@@ -12,6 +12,17 @@ function TodoList({ item, setActiveStatus, setData }) {
         event.stopPropagation();
     }
 
+    const handleEdit = (event) => {
+        setData({
+            id: item.id,
+            title: item.title,
+            priority: item.priority,
+            edit: true
+        })
+
+        event.stopPropagation();
+    }
+
     return (
         <div className='p-6 w-full h-20 bg-white rounded-xl border border-gray-200 shadow-xl inline-flex flex-col'>
             <div className='flex flex-row justify-between items-center'>
@@ -36,6 +47,7 @@ function TodoList({ item, setActiveStatus, setData }) {
                         htmlFor="my-modal-2"
                         type="button"
                         className="cursor-pointer modal-button pt-1"
+                        onClick={handleEdit}
                     >
                         <i className='bx bx-pencil'></i>
                     </label>

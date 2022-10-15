@@ -47,8 +47,9 @@ function Dashboard() {
         );
         setDone(true)
         setActivity(activity.filter((val) => val.id !== id))
-        // console.log(activity.length)
+        setData([])
     }
+    // console.log(data)
 
     useEffect(() => {
         getActivities()

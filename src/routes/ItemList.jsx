@@ -50,8 +50,25 @@ function ItemList() {
             setItem(response.data)
         }).catch(err => console.log(err.message))
         await getItemsList()
-        // console.log(title, priority)
     }
+
+    const editTodo = async (id, title, priority) => {
+        const request = {
+            title,
+            priority,
+        }
+        const headers = {
+            "Content-Type": "application/json",
+        }
+        await axios.patch(
+            `https://todo.api.devcode.gethired.id/todo-items/${id}`, request, headers
+        ).then(response => {
+            setItem(response.data)
+        }).catch(err => console.log(err.message))
+        await getItemsList()
+        setData([])
+    }
+
 
     const deleteTodo = async (id) => {
         await axios.delete(
@@ -61,8 +78,9 @@ function ItemList() {
             setDone(true)
         }, 50);
         await getItemsList()
-        console.log(item.todo_items)
+        setData([])
     }
+    console.log(data)
 
     const priorityOption = [
         {
@@ -117,7 +135,7 @@ function ItemList() {
                 </div>
             }
 
-            <ModalAdd priorityOption={priorityOption} createTodo={createTodo} />
+            <ModalAdd priorityOption={priorityOption} data={data} setData={setData} createTodo={createTodo} editTodo={editTodo} />
             <ModalDelete data={data} deleteActivity={deleteTodo} />
             <ModalDone done={done} setDone={setDone} />
         </>

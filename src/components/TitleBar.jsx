@@ -18,23 +18,28 @@ function TitleBar({ item, afterChange, addActivity }) {
 
     const sortOption = [
         {
-            value: "Terbaru",
+            label: "Terbaru",
+            value: "terbaru",
             icon: "bx bx-sort-down",
         },
         {
-            value: "Terlama",
+            label: "Terlama",
+            value: "terlama",
             icon: "bx bx-sort-up",
         },
         {
-            value: "A-Z",
+            label: "A-Z",
+            value: "a_z",
             icon: "bx bx-sort-a-z",
         },
         {
-            value: "Z-A",
+            label: "Z-A",
+            value: "z_a",
             icon: "bx bx-sort-z-a",
         },
         {
-            value: "Belum Selesai",
+            label: "Belum Selesai",
+            value: "belum_selesai",
             icon: "bx bx-sort-alt-2",
         },
     ]
@@ -140,7 +145,7 @@ function TitleBar({ item, afterChange, addActivity }) {
                                                     }} data-cy="sort-selection">
                                                     <a>
                                                         <i className={sortItem.icon}></i>
-                                                        {sortItem.value}
+                                                        {sortItem.label}
                                                     </a>
                                                 </li>
                                             ))}
