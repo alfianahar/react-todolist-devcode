@@ -177,9 +177,9 @@ function ItemList() {
                 </div>
             }
 
-            <ModalAdd priorityOption={priorityOption} data={data} setData={setData} createTodo={createTodo} editTodo={editTodo} />
-            <ModalDelete data={data} deleteActivity={deleteTodo} />
-            <ModalDone done={done} setDone={setDone} />
+            <ModalAdd priorityOption={priorityOption} data={data} setData={setData} createTodo={createTodo} editTodo={editTodo} data-cy="modal-add" />
+            <ModalDelete data={data} deleteActivity={deleteTodo} data-cy="modal-delete" />
+            <ModalDone done={done} setDone={setDone} data-cy="modal-information" />
         </>
     )
 }

@@ -128,7 +128,10 @@ function TitleBar({ item, afterChange, addActivity, setSortValue }) {
                                 </div>
                                 <div className='inline-flex items-center gap-3 lg:gap-4'>
                                     <div className="dropdown dropdown-end">
-                                        <label tabIndex={0} className="btn btn-circle btn-outline btn-secondary m-1" data-cy="todo-sort-button"
+                                        <label
+                                            tabIndex={0}
+                                            className="btn btn-circle btn-outline btn-secondary m-1"
+                                            data-cy="todo-sort-button"
                                         >
                                             <i className='bx bx-sort-alt-2 bx-sm'></i>
                                         </label>
@@ -139,7 +142,8 @@ function TitleBar({ item, afterChange, addActivity, setSortValue }) {
                                                     onClick={() => {
                                                         setSortValue(sortItem.value);
                                                         document.activeElement.blur();
-                                                    }} data-cy="sort-selection">
+                                                    }}
+                                                    data-cy="sort-selection">
                                                     <a>
                                                         <i className={sortItem.icon}></i>
                                                         {sortItem.label}

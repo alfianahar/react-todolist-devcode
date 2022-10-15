@@ -45,7 +45,7 @@ function ActivityList(props) {
 
     return (
         <div onClick={handleClick} className='p-6 w-full lg:w-56 h-56 bg-white rounded-xl border border-gray-200 shadow-xl inline-flex flex-col justify-between cursor-pointer'>
-            <h1 className='mb-2 text-xl font-bold' data-cy='activity-item-title'>
+            <h1 className='mb-2 text-xl font-bold' data-cy="activity-item-title">
                 {props.title}
             </h1>
             <div className='flex flex-row justify-between items-center' >

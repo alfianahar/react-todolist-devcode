@@ -55,7 +55,8 @@ function TodoList({ item, setActiveStatus, setData }) {
                 </div>
                 <label
                     htmlFor="my-modal"
-                    className="btn modal-button btn-circle btn-sm btn-outline btn-error" data-cy="activity-item-delete-button"
+                    className="btn modal-button btn-circle btn-sm btn-outline btn-error"
+                    data-cy="todo-item-delete-button"
                     onClick={handleDel}
                 >
                     <i className='bx bx-trash'></i>

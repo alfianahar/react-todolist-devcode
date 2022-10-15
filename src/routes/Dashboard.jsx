@@ -55,7 +55,7 @@ function Dashboard() {
         <>
             <TitleBar addActivity={addActivity} />
             {activity.length == 0 ?
-                <div className='min-h-[70vh] lg:min-h-[60vh] flex items-center'>
+                <div className='min-h-[70vh] lg:min-h-[60vh] flex items-center' onClick={addActivity}>
                     <EmptyState data-cy="activity-empty-state" main />
                 </div>
                 :
@@ -65,8 +65,8 @@ function Dashboard() {
                     ))}
                 </div>
             }
-            <ModalDelete data={data} deleteActivity={deleteActivity} />
-            <ModalDone done={done} setDone={setDone} />
+            <ModalDelete data={data} deleteActivity={deleteActivity} data-cy="modal-delete" />
+            <ModalDone done={done} setDone={setDone} data-cy="modal-information" />
         </>
     )
 }
