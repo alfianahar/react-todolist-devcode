@@ -49,7 +49,7 @@ function TitleBar({ item, afterChange, addActivity, setSortValue }) {
         setTitle(item.title)
         setTimeout(() => {
             document.getElementById("item-title").focus();
-        }, 5);
+        }, 1);
         return
     }
 
@@ -61,10 +61,8 @@ function TitleBar({ item, afterChange, addActivity, setSortValue }) {
             "Content-Type": "application/json",
         }
         await axios.patch(`https://todo.api.devcode.gethired.id/activity-groups/${item.id}`, request, headers)
-        await afterChange()
-        setTimeout(() => {
-            setEditTitle(false);
-        }, 1);
+        afterChange()
+        setEditTitle(false);
         return
     }
 

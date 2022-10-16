@@ -32,7 +32,7 @@ function ItemList() {
             "Content-Type": "application/json",
         }
         await axios.patch(`https://todo.api.devcode.gethired.id/todo-items/${id}`, request, headers)
-        await getItemsList()
+        getItemsList()
         return
     }
 
@@ -50,7 +50,7 @@ function ItemList() {
         ).then(response => {
             setItem(response.data)
         }).catch(err => console.log(err.message))
-        await getItemsList()
+        getItemsList()
         setData([])
     }
 
@@ -67,7 +67,7 @@ function ItemList() {
         ).then(response => {
             setItem(response.data)
         }).catch(err => console.log(err.message))
-        await getItemsList()
+        getItemsList()
         setData([])
     }
 
@@ -76,10 +76,10 @@ function ItemList() {
         await axios.delete(
             `https://todo.api.devcode.gethired.id/todo-items/${id}`
         );
-        setTimeout(() => {
-            setDone(true)
-        }, 50);
-        await getItemsList()
+        setDone(true)
+        // setTimeout(() => {
+        // }, 1);
+        getItemsList()
         setData([])
     }
 
