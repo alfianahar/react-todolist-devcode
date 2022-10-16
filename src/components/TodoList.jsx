@@ -24,7 +24,7 @@ function TodoList({ item, setActiveStatus, setData }) {
     }
 
     return (
-        <div className='p-6 w-full h-20 bg-white rounded-xl border border-gray-200 shadow-xl inline-flex flex-col'>
+        <div className='p-6 w-full h-20 bg-white rounded-xl border border-gray-200 shadow-xl inline-flex flex-col' data-cy="todo-item">
             <div className='flex flex-row justify-between items-center'>
                 <div className='inline-flex items-center gap-4'>
                     <input
