@@ -51,6 +51,7 @@ function ItemList() {
             setItem(response.data)
         }).catch(err => console.log(err.message))
         await getItemsList()
+        setData([])
     }
 
     const editTodo = async (id, title, priority) => {
