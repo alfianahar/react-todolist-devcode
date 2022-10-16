@@ -161,7 +161,7 @@ function ItemList() {
             <TitleBar item={item} afterChange={getItemsList} setSortValue={setSortValue} />
             {item?.todo_items?.length === 0 ?
                 <label className='min-h-[70vh] lg:min-h-[60vh] flex items-center cursor-pointer' htmlFor="my-modal-2">
-                    <EmptyState data-cy="todo-empty-state" />
+                    <EmptyState datacy={"todo-empty-state"} />
                 </label>
                 :
                 <div className="flex flex-col gap-2 mt-7 lg:mt-13">

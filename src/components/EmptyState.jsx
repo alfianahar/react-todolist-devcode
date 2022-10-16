@@ -2,9 +2,9 @@ import React from 'react'
 import emptyActivity from '../assets/activity-empty-state.svg'
 import todoActivity from '../assets/todo-empty-state.svg'
 
-function EmptyState({ main }) {
+function EmptyState({ main, datacy }) {
     return (
-        <div className="flex justify-center">
+        <div className="flex justify-center" data-cy={datacy}>
             {main ?
                 <img
                     src={emptyActivity}
