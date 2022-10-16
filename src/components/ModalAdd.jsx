@@ -41,7 +41,7 @@ function ModalAdd({ priorityOption, data, setData, createTodo, editTodo }) {
                             <i className='bx bx-x bx-sm'></i>
                         </label>
                     </div>
-                    <form method="post">
+                    <form method="post" >
                         <div className="border-t border-b pt-6 pb-6 space-y-6">
                             <div className="flex flex-col">
                                 <label className="font-semibold text-xs mb-3 "
@@ -95,18 +95,21 @@ function ModalAdd({ priorityOption, data, setData, createTodo, editTodo }) {
                             </div>
                         </div>
                         <div className="flex justify-end mt-6">
-                            <button
-                                className="btn btn-primary py-3 px-9 text-white"
-                                type="submit"
-                                htmlFor="my-modal-2"
-                                data-cy="modal-add-save-button"
-                                disabled={todoTitle === ''}
-                                onClick={() =>
-                                    editor()
-                                }
-                            >
-                                Simpan
-                            </button>
+                            {todoTitle === ""
+                                ? <button disabled className='btn btn-primary py-3 px-9 text-white' data-cy="modal-add-save-button">Simpan</button>
+                                :
+                                <label
+                                    className="btn btn-primary py-3 px-9 text-white"
+                                    type="submit"
+                                    htmlFor="my-modal-2"
+                                    data-cy="modal-add-save-button"
+                                    onClick={() =>
+                                        editor()
+                                    }
+                                >
+                                    Simpan
+                                </label>
+                            }
                         </div>
                     </form>
                 </label>
