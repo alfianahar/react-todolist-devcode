@@ -61,7 +61,7 @@ function TitleBar({ item, afterChange, addActivity, setSortValue }) {
             "Content-Type": "application/json",
         }
         await axios.patch(`https://todo.api.devcode.gethired.id/activity-groups/${item.id}`, request, headers)
-        afterChange()
+        await afterChange()
         setEditTitle(false);
         return
     }
