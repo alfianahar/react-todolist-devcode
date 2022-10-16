@@ -95,7 +95,7 @@ function ModalAdd({ priorityOption, data, setData, createTodo, editTodo }) {
                             </div>
                         </div>
                         <div className="flex justify-end mt-6">
-                            <label
+                            <button
                                 className="btn btn-primary py-3 px-9 text-white"
                                 type="submit"
                                 htmlFor="my-modal-2"
@@ -106,7 +106,7 @@ function ModalAdd({ priorityOption, data, setData, createTodo, editTodo }) {
                                 }
                             >
                                 Simpan
-                            </label>
+                            </button>
                         </div>
                     </form>
                 </label>
