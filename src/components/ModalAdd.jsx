@@ -31,7 +31,7 @@ function ModalAdd({ priorityOption, data, setData, createTodo, editTodo }) {
             <input type="checkbox" id="my-modal-2" className="modal-toggle" />
             <label htmlFor="my-modal-2" className="modal" onClick={(e) =>
                 e.target === e.currentTarget ? setData([]) : ''} data-cy="modal-add">
-                <label className="modal-box-add relative " >
+                <label className="modal-box-add relative" >
                     <div className="flex justify-between items-center mb-6">
                         <h1 className="text-xl font-semibold">Tambah List Item</h1>
                         <label
@@ -45,6 +45,7 @@ function ModalAdd({ priorityOption, data, setData, createTodo, editTodo }) {
                         <div className="flex flex-col">
                             <label className="font-semibold text-xs mb-3 "
                             >NAMA LIST ITEM</label>
+                            <input className='hidden' />
                             <input
                                 type="text"
                                 placeholder="Tambahkan nama list item"
