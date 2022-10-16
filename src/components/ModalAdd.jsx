@@ -9,8 +9,10 @@ function ModalAdd({ priorityOption, data, setData, createTodo, editTodo }) {
     const editor = () => {
         if (data.id) {
             editTodo(data.id, todoTitle, priority)
+            setData([])
         } else {
             createTodo(todoTitle, priority)
+            setData([])
         }
     }
 
@@ -44,14 +46,12 @@ function ModalAdd({ priorityOption, data, setData, createTodo, editTodo }) {
                             <label className="font-semibold text-xs mb-3 "
                             >NAMA LIST ITEM</label>
                             <input
-                                required
                                 type="text"
                                 placeholder="Tambahkan nama list item"
                                 data-cy="modal-add-name-input"
                                 className='input input-bordered input-primary w-full rounded-md'
                                 value={todoTitle}
                                 onChange={(e) => setTodoTitle(e.target.value)}
-                                onKeyDown={(e) => { e.key === 'Enter' ? '' : '' }}
                             />
                         </div>
                         <div className="flex flex-col">
@@ -95,14 +95,13 @@ function ModalAdd({ priorityOption, data, setData, createTodo, editTodo }) {
                     </div>
                     <div className="flex justify-end mt-6">
                         <label
+                            disabled={todoTitle == ''}
                             className={`btn btn-primary py-3 px-9 text-white ${todoTitle === '' ? "bg-opacity-70" : ''}`}
                             type="submit"
                             htmlFor="my-modal-2"
                             data-cy="modal-add-save-button"
-                            disabled={todoTitle === ''}
                             onClick={() => {
                                 editor();
-                                setPriority('very-high')
                             }}
                         >
                             Simpan
