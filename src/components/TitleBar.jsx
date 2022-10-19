@@ -53,7 +53,8 @@ function TitleBar({ item, afterChange, addActivity, setSortValue }) {
         return
     }
 
-    const editTitleActivity = async () => {
+    const editTitleActivity = async (e) => {
+        e.preventDefault()
         const request = {
             title: title,
         }
@@ -109,7 +110,7 @@ function TitleBar({ item, afterChange, addActivity, setSortValue }) {
                                             value={title}
                                             onChange={(e) => setTitle(e.target.value)}
                                             onBlur={editTitleActivity}
-                                            onKeyDown={(e) => { e.key === 'Enter' ? editTitleActivity() : '' }}
+                                            onKeyDown={(e) => { e.key === 'Enter' ? editTitleActivity(e) : '' }}
                                         />
                                         :
                                         <h1 className="font-bold text-2xl lg:text-3xl cursor-pointer"
