@@ -7,7 +7,7 @@ const usePathname = () => {
     return location.pathname;
 }
 
-function TitleBar({ item, afterChange, addActivity, setSortValue }) {
+function TitleBar({ item, afterChange, addActivity, setSortValue, sortValue }) {
     const [path, setPath] = useState()
     const [editTitle, setEditTitle] = useState(false)
     const [title, setTitle] = useState('')
@@ -138,6 +138,7 @@ function TitleBar({ item, afterChange, addActivity, setSortValue }) {
                                             {sortOption.map((sortItem) => (
                                                 <li
                                                     key={sortItem.value}
+                                                    className={sortValue == sortItem.value ? "bordered" : ""}
                                                     onClick={() => {
                                                         setSortValue(sortItem.value);
                                                         document.activeElement.blur();

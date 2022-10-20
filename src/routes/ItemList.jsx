@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import TitleBar from '../components/TitleBar';
@@ -109,7 +109,7 @@ function ItemList() {
         }
     ]
 
-    const sortedTodo = () => {
+    const sortedTodo = useMemo(() => {
         let items = item?.todo_items;
 
         function compare(a, b, sortedKey, sortedType) {
@@ -135,29 +135,32 @@ function ItemList() {
             items.sort((a, b) => compare(a, b, "id", "asc"));
         }
         if (sortValue === "terlama")
-            items = items.sort((a, b) => compare(a, b, "id", "desc"));
+            items = items?.sort((a, b) => compare(a, b, "id", "desc"));
         if (sortValue === "a_z")
-            items = items.sort((a, b) => compare(a, b, "title", "desc"));
+            items = items?.sort((a, b) => compare(a, b, "title", "desc"));
         if (sortValue === "z_a")
-            items = items.sort((a, b) => compare(a, b, "title", "asc"));
+            items = items?.sort((a, b) => compare(a, b, "title", "asc"));
         if (sortValue === "belum_selesai")
-            items = items.sort((a, b) => compare(a, b, "is_active", "asc"));
+            items = items?.sort((a, b) => compare(a, b, "is_active", "asc"));
 
         return items;
-    };
+    }, [sortValue, item]);
 
-    useEffect(() => {
-        sortedTodo()
-    }, [sortValue])
+    // useEffect(() => {
+    //     sortedTodo()
+    // }, [sortValue])
 
     useEffect(() => {
         getItemsList()
     }, [])
 
+    console.log(sortValue)
+    console.log(sortedTodo)
+
 
     return (
         <>
-            <TitleBar item={item} afterChange={getItemsList} setSortValue={setSortValue} />
+            <TitleBar item={item} afterChange={getItemsList} setSortValue={setSortValue} sortValue={sortValue} />
             {item?.todo_items?.length === 0 ?
                 <label className='min-h-[70vh] lg:min-h-[60vh] flex items-center cursor-pointer' htmlFor="my-modal-2">
                     <EmptyState datacy={"todo-empty-state"} />
@@ -168,7 +171,7 @@ function ItemList() {
                         <></>
                         :
                         <>
-                            {sortedTodo().map((todo) => (
+                            {sortedTodo.map((todo) => (
                                 <TodoList key={todo.id} item={todo} setActiveStatus={setActiveStatus} setData={setData} />
                             ))}
                         </>
