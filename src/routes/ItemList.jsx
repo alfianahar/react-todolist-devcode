@@ -21,7 +21,7 @@ function ItemList() {
             `https://todo.api.devcode.gethired.id/activity-groups/${params.id}`
         ).then(response => {
             setItem(response.data)
-        }).catch(err => console.log(err.message))
+        }).catch(err => console.alert(err.message))
     }
 
     const setActiveStatus = async (id, isActive) => {
@@ -49,7 +49,7 @@ function ItemList() {
             `https://todo.api.devcode.gethired.id/todo-items`, request, headers
         ).then(response => {
             setItem(response.data)
-        }).catch(err => console.log(err.message))
+        }).catch(err => console.alert(err.message))
         await getItemsList()
         setData([])
     }
@@ -66,7 +66,7 @@ function ItemList() {
             `https://todo.api.devcode.gethired.id/todo-items/${id}`, request, headers
         ).then(response => {
             setItem(response.data)
-        }).catch(err => console.log(err.message))
+        }).catch(err => console.alert(err.message))
         await getItemsList()
         setData([])
     }
@@ -153,9 +153,6 @@ function ItemList() {
     useEffect(() => {
         getItemsList()
     }, [])
-
-    console.log(sortValue)
-    console.log(sortedTodo)
 
 
     return (

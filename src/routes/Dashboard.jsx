@@ -18,7 +18,7 @@ function Dashboard() {
             `https://todo.api.devcode.gethired.id/activity-groups?email=alfian.aswinda%40gmail.com`
         ).then(response => {
             setActivity(response.data.data)
-        }).catch(err => console.log(err.message))
+        }).catch(err => console.alert(err.message))
     }
 
     const addActivity = async () => {
